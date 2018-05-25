@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check --extract-css",
+    "start": "node server.js",
     "build": "ng build --extract-css",
     "prod": "ng build --prod --output-hashing=media",
     "prod:hashed": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "npm rebuild node-sass"
+    "postinstall": "ng build --aot -prod"
   },
   "dependencies": {
     "@agm/core": "1.0.0-beta.2",
