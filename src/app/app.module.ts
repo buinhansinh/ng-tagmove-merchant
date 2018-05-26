@@ -24,6 +24,9 @@ import { LayoutModule } from './layout/layout.module';
 
 import { HomeComponent } from './home/home.component';
 import { Page2Component } from './page-2/page-2.component';
+import { OrdersComponent } from './orders/orders.component';
+import { PayoutsComponent } from './payouts/payouts.component';
+import { ProductsComponent } from './products/products.component';
 
 
 // *******************************************************************************
@@ -35,7 +38,10 @@ import { Page2Component } from './page-2/page-2.component';
 
     // Pages
     HomeComponent,
-    Page2Component
+    Page2Component,
+    OrdersComponent,
+    PayoutsComponent,
+    ProductsComponent
   ],
 
   imports: [

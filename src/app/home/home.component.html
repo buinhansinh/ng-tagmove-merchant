@@ -1,3 +1,160 @@
-<h4 class="font-weight-bold py-3 mb-4">Home</h4>
-<p>This page is an example of basic layout. For more options use <strong>Angular starter template generator</strong> in the docs.</p>
-<p><button class="btn btn-primary btn-lg">Button</button></p>
+<h4 class="font-weight-bold py-3 mb-4">
+  Dashboard
+  <div class="text-muted text-tiny mt-1"><small class="font-weight-normal">Today is Tuesday, 8 February 2018</small></div>
+</h4>
+
+<!-- Counters -->
+<div class="row">
+  <div class="col-sm-6 col-xl-3">
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="lnr lnr-cart display-4 text-success"></div>
+          <div class="ml-3">
+            <div class="text-muted small">Monthly sales</div>
+            <div class="text-large">236</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-6 col-xl-3">
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="lnr lnr-earth display-4 text-info"></div>
+          <div class="ml-3">
+            <div class="text-muted small">Monthly offers</div>
+            <div class="text-large">687</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-6 col-xl-3">
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="lnr lnr-gift display-4 text-danger"></div>
+          <div class="ml-3">
+            <div class="text-muted small">Products</div>
+            <div class="text-large">985</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-6 col-xl-3">
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="lnr lnr-users display-4 text-warning"></div>
+          <div class="ml-3">
+            <div class="text-muted small">Customers</div>
+            <div class="text-large">105</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- / Counters -->
+  
+<!-- Statistics -->
+<div class="card mb-4">
+  <h6 class="card-header with-elements">
+    <div class="card-header-title">Statistics</div>
+    <div class="card-header-elements ml-auto">
+      <label class="text m-0">
+        <span class="text-light text-tiny font-weight-semibold align-middle">
+          SHOW STATS
+        </span>
+        <span class="switcher switcher-sm d-inline-block align-middle mr-0 ml-2">
+          <input type="checkbox" class="switcher-input" checked>
+          <span class="switcher-indicator">
+            <span class="switcher-yes"></span>
+            <span class="switcher-no"></span>
+          </span>
+        </span>
+      </label>
+    </div>
+  </h6>
+  <div class="row no-gutters row-bordered">
+    <div class="col-md-8 col-lg-12 col-xl-8">
+        
+        <div style="height: 360px">
+          <!-- <canvas baseChart height="210"
+            [datasets]="chart1Data"
+            [labels]="['2016-10', '2016-11', '2016-12', '2017-01', '2017-02', '2017-03', '2017-04', '2017-05']"
+            [options]="chart1Options"
+            [chartType]="'line'"
+            [colors]="chart1Colors">
+          </canvas> -->
+          <p>graph goes here</p>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xl-12 row no-gutters row-bordered row-border-light container-m--x">
+          <!-- Counters -->
+          <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+            <div class="d-flex align-items-center container-p-x py-4">
+              <div class="lnr lnr-cart display-4 text-primary"></div>
+              <div class="ml-3">
+                <div class="text-muted small">Quantity</div>
+                <div class="text-large">5</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+            <div class="d-flex align-items-center container-p-x py-4">
+              <div class="lnr lnr-earth display-4 text-primary"></div>
+              <div class="ml-3">
+                <div class="text-muted small">Average Price</div>
+                <div class="text-large">£68</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+            <div class="d-flex align-items-center container-p-x py-4">
+              <div class="lnr lnr-gift display-4 text-primary"></div>
+              <div class="ml-3">
+                <div class="text-muted small">Total Sale Price</div>
+                <div class="text-large">£985</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+            <div class="d-flex align-items-center container-p-x py-4">
+              <div class="lnr lnr-users display-4 text-primary"></div>
+                <button type="button" class="btn btn-xl btn-success">Sell</button>
+            </div>
+          </div>
+          <!-- / Counters -->
+        </div>
+
+    </div>
+
+    <div class="col-md-4 col-lg-12 col-xl-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">Tag huer watch</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+        </div>
+    </div>
+
+</div>
+<!-- / Statistics -->
