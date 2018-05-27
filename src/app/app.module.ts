@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 // *******************************************************************************
@@ -30,6 +31,7 @@ import { PayoutsComponent } from './payouts/payouts.component';
 import { ProductsComponent } from './products/products.component';
 import { OrderItemComponent } from './order-item/order-item.component';
 import { ProductService } from './services/product.service';
+import { HomeChartComponent } from './charts/home-chart/home-chart.component';
 
 
 // *******************************************************************************
@@ -45,7 +47,8 @@ import { ProductService } from './services/product.service';
     OrdersComponent,
     PayoutsComponent,
     ProductsComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    HomeChartComponent
   ],
 
   imports: [
@@ -56,7 +59,8 @@ import { ProductService } from './services/product.service';
 
     // App
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    ChartsModule
   ],
 
   providers: [
