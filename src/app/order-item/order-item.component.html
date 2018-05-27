@@ -138,7 +138,7 @@
               <div class="media align-items-center">
                 <img [src]="'assets/img/uikit/' + item.image" class="d-block ui-w-40 ui-bordered mr-4" alt>
                 <div class="media-body">
-                  <a href="javascript:void(0)" class="d-block text-dark">{{item.title}} <span class="text-muted">#{{item.id}}</span></a>
+                  <a [routerLink]="['/product', item.id]" class="d-block text-dark">{{item.title}} <span class="text-muted">#{{item.id}}</span></a>
                   <small>
                     <span *ngFor="let key of objectKeys(item.options)">
                       <span class="text-muted">{{ formatOptionLabel(key) }}:</span>
