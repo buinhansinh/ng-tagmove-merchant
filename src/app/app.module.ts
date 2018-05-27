@@ -1,5 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,6 +28,8 @@ import { Page2Component } from './page-2/page-2.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PayoutsComponent } from './payouts/payouts.component';
 import { ProductsComponent } from './products/products.component';
+import { OrderItemComponent } from './order-item/order-item.component';
+import { ProductService } from './services/product.service';
 
 
 // *******************************************************************************
@@ -41,11 +44,14 @@ import { ProductsComponent } from './products/products.component';
     Page2Component,
     OrdersComponent,
     PayoutsComponent,
-    ProductsComponent
+    ProductsComponent,
+    OrderItemComponent
   ],
 
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     NgbModule.forRoot(),
 
     // App
@@ -55,7 +61,8 @@ import { ProductsComponent } from './products/products.component';
 
   providers: [
     Title,
-    AppService
+    AppService,
+    ProductService
   ],
 
   bootstrap: [

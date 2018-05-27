@@ -14,6 +14,7 @@ import { Page2Component } from './page-2/page-2.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PayoutsComponent } from './payouts/payouts.component';
 import { ProductsComponent } from './products/products.component';
+import { OrderItemComponent } from './order-item/order-item.component';
 
 // *******************************************************************************
 // Routes
@@ -26,6 +27,10 @@ const routes: Routes = [
 
   { path: 'orders', component: Layout1Component, children: [
     { path: '', component: OrdersComponent },
+  ]},
+
+  { path: 'order/:id', component: Layout1Component, children: [
+    { path: '', component: OrderItemComponent },
   ]},
 
   { path: 'payouts', component: Layout1Component, children: [
