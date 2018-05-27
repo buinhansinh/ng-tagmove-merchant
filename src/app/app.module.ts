@@ -25,13 +25,18 @@ import { LayoutModule } from './layout/layout.module';
 // Pages
 
 import { HomeComponent } from './home/home.component';
-import { Page2Component } from './page-2/page-2.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PayoutsComponent } from './payouts/payouts.component';
 import { ProductsComponent } from './products/products.component';
 import { OrderItemComponent } from './order-item/order-item.component';
 import { ProductService } from './services/product.service';
 import { HomeChartComponent } from './charts/home-chart/home-chart.component';
+import { HelpComponent } from './help/help.component';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { TermsComponent } from './terms/terms.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 // *******************************************************************************
@@ -43,12 +48,17 @@ import { HomeChartComponent } from './charts/home-chart/home-chart.component';
 
     // Pages
     HomeComponent,
-    Page2Component,
     OrdersComponent,
     PayoutsComponent,
     ProductsComponent,
     OrderItemComponent,
-    HomeChartComponent
+    HomeChartComponent,
+    HelpComponent,
+    ProductItemComponent,
+    AboutComponent,
+    ContactComponent,
+    TermsComponent,
+    AccountSettingsComponent
   ],
 
   imports: [
