@@ -8,7 +8,6 @@ import * as numeral from 'numeral';
   selector: 'app-invoice-print',
   templateUrl: './payout-receipt.component.html',
   styles: [`
-    html, body { background: #fff !important; }
     body > :not(app-root) { display: none !important; }
     .invoice-print { min-width: 768px !important; font-size: 15px !important; }
     .invoice-print * { border-color: #aaa !important; color: #000 !important; }
