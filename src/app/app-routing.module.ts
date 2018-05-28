@@ -20,6 +20,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
 import { TermsComponent } from './terms/terms.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 // *******************************************************************************
 // Routes
@@ -68,6 +69,10 @@ const routes: Routes = [
 
   { path: 'account-settings', component: Layout1Component, children: [
     { path: '', component: AccountSettingsComponent },
+  ]},
+
+  { path: 'add-product', component: Layout1Component, children: [
+    { path: '', component: AddProductComponent },
   ]}
 
 ];

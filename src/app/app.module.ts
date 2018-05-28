@@ -37,6 +37,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { TermsComponent } from './terms/terms.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 // *******************************************************************************
@@ -58,7 +59,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     AboutComponent,
     ContactComponent,
     TermsComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    AddProductComponent
   ],
 
   imports: [
