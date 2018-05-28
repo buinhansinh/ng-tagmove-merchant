@@ -21,6 +21,8 @@ import { HelpComponent } from './help/help.component';
 import { TermsComponent } from './terms/terms.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { PayoutReceiptComponent } from './payout-receipt/payout-receipt.component';
+import { FaqComponent } from './faq/faq.component';
 
 // *******************************************************************************
 // Routes
@@ -43,6 +45,10 @@ const routes: Routes = [
     { path: '', component: PayoutsComponent },
   ]},
 
+  { path: 'payout-receipt', component: Layout1Component, children: [
+    { path: '', component: PayoutReceiptComponent },
+  ]},
+
   { path: 'products', component: Layout1Component, children: [
     { path: '', component: ProductsComponent },
   ]},
@@ -53,6 +59,10 @@ const routes: Routes = [
 
   { path: 'about', component: Layout1Component, children: [
     { path: '', component:  AboutComponent },
+  ]},
+
+  { path: 'faq', component: Layout1Component, children: [
+    { path: '', component: FaqComponent },
   ]},
 
   { path: 'contact', component: Layout1Component, children: [

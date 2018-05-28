@@ -38,6 +38,8 @@ import { ContactComponent } from './contact/contact.component';
 import { TermsComponent } from './terms/terms.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { PayoutReceiptComponent } from './payout-receipt/payout-receipt.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 // *******************************************************************************
@@ -60,7 +62,9 @@ import { AddProductComponent } from './add-product/add-product.component';
     ContactComponent,
     TermsComponent,
     AccountSettingsComponent,
-    AddProductComponent
+    AddProductComponent,
+    PayoutReceiptComponent,
+    FaqComponent
   ],
 
   imports: [
