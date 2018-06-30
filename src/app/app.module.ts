@@ -22,6 +22,12 @@ import { LayoutModule } from './layout/layout.module';
 
 
 // *******************************************************************************
+// Services
+import { ProductService } from './services/product.service';
+import { WebsocketService } from './services/websocket.service';
+
+
+// *******************************************************************************
 // Pages
 
 import { HomeComponent } from './home/home.component';
@@ -29,7 +35,6 @@ import { OrdersComponent } from './orders/orders.component';
 import { PayoutsComponent } from './payouts/payouts.component';
 import { ProductsComponent } from './products/products.component';
 import { OrderItemComponent } from './order-item/order-item.component';
-import { ProductService } from './services/product.service';
 import { HomeChartComponent } from './charts/home-chart/home-chart.component';
 import { HelpComponent } from './help/help.component';
 import { ProductItemComponent } from './product-item/product-item.component';
@@ -82,7 +87,8 @@ import { FaqComponent } from './faq/faq.component';
   providers: [
     Title,
     AppService,
-    ProductService
+    ProductService,
+    WebsocketService
   ],
 
   bootstrap: [

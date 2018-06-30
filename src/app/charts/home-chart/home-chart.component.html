@@ -1,7 +1,7 @@
-<div style="display: block;">
-  <canvas baseChart width="700" height="360"
-    [datasets]="lineChartData"
-    [labels]="lineChartLabels"
+<div style="display: block;" *ngIf="chartArray">
+  <canvas *ngFor="let chartData of chartArray" baseChart width="700" height="360"
+    [datasets]="chartData.data"
+    [labels]="chartData.labels"
     [options]="lineChartOptions"
     [colors]="lineChartColors"
     [legend]="lineChartLegend"
