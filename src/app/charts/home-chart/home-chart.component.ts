@@ -35,7 +35,7 @@ export class HomeChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._socket.connect('ws://localhost:5000/ws').subscribe((data) => {
+    this._socket.connect('ws://ng-tagmove-merchant-staging.herokuapp.com/ws').subscribe((data) => {
       const dataDetails = data;
       const chartDataSet = [
         {
