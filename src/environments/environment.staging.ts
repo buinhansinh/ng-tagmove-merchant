@@ -5,5 +5,6 @@
 
 export const environment = {
     production: true,
-    apiUrl: 'http://api.tagmove.uk/api/v1/'
+    apiUrl: 'http://go-tagmove.herokuapp.com/api/v1/'
 };
+  
