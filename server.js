@@ -4,6 +4,10 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || '4001';
 
+app.get('/config', (req, res) => {
+    res.status(200).send({env: process.env.NODE_ENV || 'develop'})
+})
+
 app.use(express.static(__dirname + '/dist'));
 
 app.get('/*', (req, res) => {

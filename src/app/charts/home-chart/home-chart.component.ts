@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebsocketService } from '../../services/websocket.service';
-import { BaseChartDirective } from 'ng2-charts/ng2-charts';
-import homeChartData from '../../../assets/json/home-chart-data';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
   selector: 'app-home-chart',
@@ -30,12 +29,14 @@ export class HomeChartComponent implements OnInit {
   lineChartLegend: boolean = false;
   lineChartType: string = 'line';
 
-  constructor(private _socket: WebsocketService) {
-
-  }
+  constructor(
+    private _socket: WebsocketService,
+    private configService: ConfigService
+  ) { }
 
   ngOnInit() {
-    this._socket.connect('ws://ng-tagmove-merchant-staging.herokuapp.com/ws').subscribe((data) => {
+    const config = this.configService.getConfig();
+    this._socket.connect(`ws://${config.baseUrl}/ws`).subscribe((data) => {
       const dataDetails = data;
       const chartDataSet = [
         {

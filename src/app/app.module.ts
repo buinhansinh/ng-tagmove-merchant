@@ -1,6 +1,7 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -25,6 +26,7 @@ import { LayoutModule } from './layout/layout.module';
 // Services
 import { ProductService } from './services/product.service';
 import { WebsocketService } from './services/websocket.service';
+import { ConfigService } from './services/config.service';
 
 
 // *******************************************************************************
@@ -76,6 +78,7 @@ import { FaqComponent } from './faq/faq.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
     NgbModule.forRoot(),
 
     // App
@@ -88,7 +91,9 @@ import { FaqComponent } from './faq/faq.component';
     Title,
     AppService,
     ProductService,
-    WebsocketService
+    WebsocketService,
+    ConfigService,
+    {provide: APP_INITIALIZER, useFactory: configFactory, deps: [ConfigService], multi: true }
   ],
 
   bootstrap: [
@@ -96,3 +101,7 @@ import { FaqComponent } from './faq/faq.component';
   ]
 })
 export class AppModule {}
+
+export function configFactory(configService: ConfigService) {
+  return () => configService.loadEnv();
+}
