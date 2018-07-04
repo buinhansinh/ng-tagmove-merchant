@@ -26,7 +26,7 @@ export class ConfigService {
 
         case 'production': {
             return {
-              baseUrl: 'localhost-prod:5000'
+              baseUrl: 'api.tagmove.uk/v1'
             }
         }
       }
