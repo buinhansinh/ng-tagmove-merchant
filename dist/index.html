@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en" class="default-style layout-fixed layout-navbar-fixed"><head><base href="/"><title>Angular Starter</title><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><!-- Main font --><link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet"><!-- Icons. Uncomment required icon fonts --><link rel="stylesheet" href="assets/vendor/fonts/fontawesome.css"><link rel="stylesheet" href="assets/vendor/fonts/ionicons.css"><link rel="stylesheet" href="assets/vendor/fonts/linearicons.css"><link rel="stylesheet" href="assets/vendor/fonts/open-iconic.css"><link rel="stylesheet" href="assets/vendor/fonts/pe-icon-7-stroke.css"><!-- Layout helpers --><script src="assets/vendor/js/layout-helpers.js"></script><!-- Jquery --><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script><link href="styles.bundle.css" rel="stylesheet"/></head><body><!-- App root --><app-root></app-root><!-- Websocket test --><!-- <h3>WebSocket Go</h3>
+    <pre id="output"></pre>
+
+    <script>
+      url = 'ws://localhost:5000/ws';
+      c = new WebSocket(url);
+      
+      send = function(data){
+        $("#output").append((new Date())+ " ==> "+data+"\n")
+        c.send(data)
+      }
+
+      c.onmessage = function(msg){
+        $("#output").append((new Date())+ " <== "+msg.data+"\n")
+        console.log(msg)
+      }
+
+      c.onopen = function(){
+        setInterval( 
+          function(){ send("ping") }
+        , 1000 )
+      }
+    </script> --><!-- / Websocket test --><!-- IE11 fix --><script>if (!!window.MSInputMethodContext && !!document.documentMode || document.documentMode <= 11) {
+      window.MouseEvent.prototype = Event.prototype;
+
+      window.MouseEvent = function (eventType, params) {
+        params = params || { bubbles: false, cancelable: false };
+        var mouseEvent = document.createEvent('MouseEvent');
+        mouseEvent.initMouseEvent(eventType, params.bubbles, params.cancelable, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+        return mouseEvent;
+      }
+    }</script><script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body></html>
