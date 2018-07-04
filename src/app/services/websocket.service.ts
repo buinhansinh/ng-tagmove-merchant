@@ -1,7 +1,4 @@
-import { Subject } from "rxjs/subject";
-import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 import { Injectable } from '@angular/core';
 import { w3cwebsocket } from 'websocket';
 
