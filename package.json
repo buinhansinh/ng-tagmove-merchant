@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check --extract-css",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check --extract-css --port 4201",
     "build": "ng build",
     "prod": "ng build --prod --output-hashing=media --extract-css --build-optimizer --named-chunks",
     "prod:hashed": "ng build --prod",

@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ProductService {
 
-  baseUrl =  'https://api.github.com';
-
   constructor(private _http: HttpClient) { }
 
+    mockUrl = 'https://private-b19a02-tagmove.apiary-mock.com/api/v1';
+
   getProducts(): any {
-    return this._http.get(`${this.baseUrl}/users/kevgilmore/repos`)
+    return this._http.get(`${this.mockUrl}/m/merchid/products`)
   }
 
 }

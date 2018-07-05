@@ -36,6 +36,7 @@ export class HomeChartComponent implements OnInit {
 
   ngOnInit() {
     const config = this.configService.getConfig();
+    console.log(config)
     this._socket.connect(`wss://${config.baseUrl}/ws`).subscribe((data) => {
       const dataDetails = data;
       const chartDataSet = [

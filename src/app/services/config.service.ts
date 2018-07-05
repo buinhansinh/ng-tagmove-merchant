@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Http, Headers, Response, RequestOptions} from '@angular/http'
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ConfigService {
-  constructor(private _http: HttpClient, private http: Http) { }
+  constructor(private http: Http) { }
 
   getConfig(): {[key: string]: string} {
       const env = localStorage.getItem('env');
-
+      console.log(env)
 
       switch(env) {
-          case 'develop': {
+          case 'development': {
               return {
-                baseUrl: 'localhost:5000'
+                baseUrl: 'localhost:5000',
               }
           }
 

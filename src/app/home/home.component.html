@@ -135,17 +135,10 @@
     </div>
 
     <div class="col-md-4 col-lg-12 col-xl-4">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">Tag huer watch</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list group item</a>
+        <div class="list-group" *ngFor="let product of products" (click)="changeProduct(product)">
+          <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+            {{product.productName}} | {{product.productID}}
+          </a>
         </div>
     </div>
 
