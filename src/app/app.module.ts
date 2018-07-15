@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { NouisliderModule } from 'ng2-nouislider';
 
 
 // *******************************************************************************
@@ -77,6 +78,7 @@ import { FaqComponent } from './faq/faq.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
     NgbModule.forRoot(),
@@ -84,7 +86,8 @@ import { FaqComponent } from './faq/faq.component';
     // App
     AppRoutingModule,
     LayoutModule,
-    ChartsModule
+    ChartsModule,
+    NouisliderModule
   ],
 
   providers: [

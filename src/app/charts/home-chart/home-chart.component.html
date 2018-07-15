@@ -8,3 +8,47 @@
     [chartType]="lineChartType">
   </canvas>
 </div>
+
+<div class="col-xs-12" style="padding: 1em; padding-left: 5; padding-right: 0">
+  <form [formGroup]="sliderForm">
+    <nouislider [connect]="true" [min]="0" [max]="getMaxPoint()" [step]="1" [formControl]="sliderForm.controls.range"></nouislider>
+  </form>
+</div>
+
+<div class="col-md-12 col-lg-12 col-xl-12 row no-gutters row-bordered row-border-light container-m--x">
+  <!-- Counters -->
+  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+    <div class="d-flex align-items-center container-p-x py-4">
+      <div class="lnr display-4 text-primary"></div>
+      <div class="ml-3">
+        <div class="text-muted small">Quantity</div>
+        <div class="text-large">{{getSelectedOffers()}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+    <div class="d-flex align-items-center container-p-x py-4">
+      <div class="lnr display-4 text-primary"></div>
+      <div class="ml-3">
+        <div class="text-muted small">Average Price</div>
+        <div class="text-large">£68</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+    <div class="d-flex align-items-center container-p-x py-4">
+      <div class="lnr display-4 text-primary"></div>
+      <div class="ml-3">
+        <div class="text-muted small">Total Sale Price</div>
+        <div class="text-large">£{{getTotalPriceForSelectedOffers()}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+    <div class="d-flex align-items-center container-p-x py-4">
+      <div class="lnr display-4 text-primary"></div>
+        <button type="button" class="btn btn-xl btn-success" (click)="sell()">Sell</button>
+    </div>
+  </div>
+  <!-- / Counters -->
+</div>
