@@ -42,7 +42,7 @@ export class HomeChartComponent implements OnInit {
 
   ngOnInit() {
     const config = this.configService.getConfig();
-    this._socket.connect(`ws://${config.baseUrl}/ws`).subscribe((data) => {
+    this._socket.connect(`wss://${config.baseUrl}/ws`).subscribe((data) => {
       setTimeout(() => {
         this.offers = data.Offers;
 
