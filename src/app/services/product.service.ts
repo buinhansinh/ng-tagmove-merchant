@@ -7,7 +7,7 @@ export class ProductService {
 
   constructor(private _http: HttpClient) { }
 
-  mockUrl = 'https://private-b19a02-tagmove.apiary-mock.com/api/v1';
+  mockUrl = 'https://private-b19a02-tagmove.apiary-mock.com/v1';
 
   getProducts(): any {
     return this._http.get(`${this.mockUrl}/m/products`)
