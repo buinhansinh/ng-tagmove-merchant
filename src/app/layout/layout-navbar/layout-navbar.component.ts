@@ -5,7 +5,7 @@ import { LayoutService } from '../../layout/layout.service';
 @Component({
   selector: 'app-layout-navbar',
   templateUrl: './layout-navbar.component.html',
-  styles: [':host { display: block; }'],
+  styles: [':host { display: block; } .tag-brand { margin-right: 1em;}'],
   host: { '[class.layout-navbar]': 'true' }
 })
 export class LayoutNavbarComponent {

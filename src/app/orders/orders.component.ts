@@ -13,7 +13,7 @@ export class OrdersComponent implements OnInit{
   isRTL: boolean;
 
   constructor(private http: HttpClient, private appService: AppService) {
-    this.appService.pageTitle = 'Order list'
+    this.appService.pageTitle = 'Orders'
     this.isRTL = appService.isRTL;
   }
 
