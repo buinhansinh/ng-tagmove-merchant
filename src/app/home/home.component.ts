@@ -17,7 +17,7 @@ export class HomeComponent {
   ) { }
 
   ngOnInit() {
-    this.appService.pageTitle = 'Home';
+    this.appService.pageTitle = 'Tagmove';
 
     this.productService.getProducts().subscribe (
       products => this.products = products

@@ -7,7 +7,7 @@ export class AppService {
 
   // Set page title
   set pageTitle(value) {
-    this.titleService.setTitle(`${value} - Angular Starter`);
+    this.titleService.setTitle(`${value} | Partner Portal`);
   }
 
   // Check for RTL layout

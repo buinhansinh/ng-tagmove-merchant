@@ -11,7 +11,7 @@ export class PayoutsComponent {
   isRTL: boolean;
 
   constructor(private appService: AppService, private layoutService: LayoutService) {
-    this.appService.pageTitle = 'Dashboard 2 - Dashboards'
+    this.appService.pageTitle = 'Payouts'
     this.isRTL = appService.isRTL;
   }
 

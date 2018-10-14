@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit{
   isRTL: boolean;
 
   constructor(private http: HttpClient, private appService: AppService, private productService: ProductService) {
-    this.appService.pageTitle = 'Product list - Pages'
+    this.appService.pageTitle = 'Products'
     this.isRTL = appService.isRTL;
 
     if (appService.isRTL) {
