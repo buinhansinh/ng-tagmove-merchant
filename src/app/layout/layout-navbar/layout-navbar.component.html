@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg align-items-lg-center container-p-x" [ngClass]="currentBg()">
 
   <!-- Brand -->
-  <a routerLink="/" class="navbar-brand">Tagmove</a>
+  <!-- <a routerLink="/" class="navbar-brand">Tagmove</a> -->
+  <a class="navbar-brand" routerlink="/" href="/"><img src="assets/img/logo/logo_partner.png"></a>
+  
 
   <!-- Sidenav toggle -->
   <div class="navbar-nav align-items-lg-center mr-auto mr-lg-4" *ngIf="sidenavToggle">
@@ -12,7 +14,6 @@
 
   <div class="navbar-collapse collapse" [ngbCollapse]="!isExpanded">
     <div class="navbar-nav align-items-lg-center">
-      <!-- <div class="nav-item"><a class="nav-link" href="#">Link 1</a></div> -->
     </div>
   </div>
 
@@ -23,7 +24,7 @@
           <a ngbDropdownToggle class="nav-link" href="javascript:void(0)">
             <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
               <img src="assets/img/avatars/1.png" alt class="d-block ui-w-30 rounded-circle">
-              <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Mike Greene</span>
+              <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Mike's Shop</span>
             </span>
           </a>
           <div ngbDropdownMenu [class.dropdown-menu-right]="!isRTL">
