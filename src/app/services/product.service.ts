@@ -10,11 +10,11 @@ export class ProductService {
   mockUrl = 'https://private-b19a02-tagmove.apiary-mock.com/api/v1';
 
   getProducts(): any {
-    return this._http.get(`${this.mockUrl}/m/merchid/products`)
+    return this._http.get(`${this.mockUrl}/m/products`)
   }
 
   acceptOffers(offerIds: any[]): any {
-    return this._http.post(`${this.mockUrl}/m/merchid/offers`, {
+    return this._http.post(`${this.mockUrl}/m/offers`, {
       offerIds
     })
   }
