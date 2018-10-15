@@ -48,32 +48,11 @@ export class OrderItemComponent {
       title: 'Nike Men Black Liteforce III Sneakers',
       id: 3455632,
       price: 115.10,
-      quantity: 2,
+      quantity: 25,
       options: {
         color: '#e81e2c',
         size: 'EU 37',
         shipsFrom: 'China'
-      }
-    }, {
-      image: 's7edge-1.jpg',
-      title: 'Samsung Galaxy S7 Edge',
-      id: 3455644,
-      price: 1049.00,
-      quantity: 1,
-      options: {
-        color: '#000',
-        storage: '32GB',
-        warranty: 'Standard - 1 year',
-        shipsFrom: 'China'
-      }
-    }, {
-      image: 'sunglasses.jpg',
-      title: 'WALKING 400 BLUE CAT3',
-      id: 3455601,
-      price: 20.55,
-      quantity: 1,
-      options: {
-        shipsFrom: 'Germany'
       }
     }]
   };
