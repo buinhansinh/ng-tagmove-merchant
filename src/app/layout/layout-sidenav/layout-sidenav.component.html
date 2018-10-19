@@ -1,5 +1,16 @@
 <sidenav [orientation]="orientation" [ngClass]="getClasses()">
 
+  <!-- Brand demo (see src/demo.css) -->
+  <div class="demo-brand" *ngIf="orientation !== 'horizontal'">
+    <span class="demo-brand-logo bg-primary">
+      <img src="assets/img/logo/logo-dark-noback.png">
+    </span>
+    <a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto" (click)="toggleSidenav()">
+      <i class="ion ion-md-menu align-middle"></i>
+    </a>
+  </div>
+  <div class="sidenav-divider mt-0" *ngIf="orientation !== 'horizontal'"></div>
+
   <!-- Inner -->
   <div class="sidenav-inner" [ngClass]="{ 'py-1': orientation !== 'horizontal' }">
 

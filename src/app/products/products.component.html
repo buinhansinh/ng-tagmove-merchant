@@ -77,9 +77,6 @@
             <th class="text-nowrap cursor-pointer" (click)="setSort('id')">
               ID<i class="ion text-muted ml-2" *ngIf="sortBy=='id'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
             </th>
-            <th class="text-nowrap cursor-pointer" (click)="setSort('inStock')">
-              In stock<i class="ion text-muted ml-2" *ngIf="sortBy=='inStock'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
-            </th>
             <th class="text-nowrap cursor-pointer" (click)="setSort('price')">
               Price<i class="ion text-muted ml-2" *ngIf="sortBy=='price'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
             </th>
@@ -87,10 +84,7 @@
               Sales<i class="ion text-muted ml-2" *ngIf="sortBy=='sales'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
             </th>
             <th class="text-nowrap cursor-pointer" (click)="setSort('views')">
-              Views<i class="ion text-muted ml-2" *ngIf="sortBy=='views'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
-            </th>
-            <th class="text-nowrap cursor-pointer" (click)="setSort('status')">
-              Status<i class="ion text-muted ml-2" *ngIf="sortBy=='status'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
+              Offers<i class="ion text-muted ml-2" *ngIf="sortBy=='views'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
             </th>
             <th></th>
           </tr>
@@ -105,17 +99,10 @@
               </div>
             </td>
             <td class="align-middle py-2">{{product.id}}</td>
-            <td class="align-middle py-2">{{product.inStock}}</td>
             <td class="align-middle py-2">{{formatPrice(product.price)}}</td>
             <td class="align-middle py-2">{{product.sales}}</td>
             <td class="align-middle py-2">{{formatNumber(product.views)}}</td>
-            <td class="align-middle py-2">
-              <span class="badge badge-outline-success" *ngIf="product.status === 1">Published</span>
-              <span class="badge badge-outline-danger" *ngIf="product.status === 2">Out of stock</span>
-              <span class="badge badge-outline-info" *ngIf="product.status === 3">Pending</span>
-            </td>
             <td class="text-nowrap align-middle py-2">
-              <a href="javascript:void(0)" class="btn btn-default btn-xs icon-btn md-btn-flat" ngbTooltip="Show"><i class="ion ion-md-eye"></i></a>&nbsp;
               <a href="javascript:void(0)" class="btn btn-default btn-xs icon-btn md-btn-flat" ngbTooltip="Edit"><i class="ion ion-md-create"></i></a>
             </td>
           </tr>

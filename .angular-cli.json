@@ -20,7 +20,6 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-
         "vendor/styles/bootstrap.scss",
         "vendor/styles/appwork.scss",
         "vendor/styles/theme-corporate.scss",

@@ -39,7 +39,10 @@
             ID<i class="ion text-muted ml-2" *ngIf="sortBy=='id'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
           </th>
           <th class="text-nowrap cursor-pointer" (click)="setSort('customer')">
-            Customer<i class="ion text-muted ml-2" *ngIf="sortBy=='customer'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
+            Product<i class="ion text-muted ml-2" *ngIf="sortBy=='customer'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
+          </th>
+          <th class="text-nowrap cursor-pointer" (click)="setSort('amount')">
+            Units<i class="ion text-muted ml-2" *ngIf="sortBy=='amount'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
           </th>
           <th class="text-nowrap cursor-pointer" (click)="setSort('amount')">
             Amount<i class="ion text-muted ml-2" *ngIf="sortBy=='amount'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
@@ -50,7 +53,6 @@
           <th class="text-nowrap cursor-pointer" (click)="setSort('status')">
             Status<i class="ion text-muted ml-2" *ngIf="sortBy=='status'" [ngClass]="'ion-md-arrow-' + (sortDesc ? 'down' : 'up')"></i>
           </th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -61,6 +63,7 @@
           <td class="align-middle">
             <a [routerLink]="['/order', order.id]">{{order.customer}}</a>
           </td>
+          <td class="align-middle">{{formatPrice(order.units)}}</td>
           <td class="align-middle">{{formatPrice(order.amount)}}</td>
           <td class="align-middle">{{order.date}}</td>
           <td class="align-middle">
@@ -68,10 +71,6 @@
             <span class="badge badge-outline-warning" *ngIf="order.status === 2">Pending</span>
             <span class="badge badge-outline-info" *ngIf="order.status === 3">Sent</span>
             <span class="badge badge-outline-danger" *ngIf="order.status === 4">Cancelled</span>
-          </td>
-          <td class="text-nowrap align-middle">
-            <a href="javascript:void(0)" class="btn btn-default btn-xs icon-btn md-btn-flat" ngbTooltip="Show"><i class="ion ion-md-eye"></i></a>&nbsp;
-            <a href="javascript:void(0)" class="btn btn-default btn-xs icon-btn md-btn-flat" ngbTooltip="Edit"><i class="ion ion-md-create"></i></a>
           </td>
         </tr>
       </tbody>
