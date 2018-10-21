@@ -51,9 +51,10 @@ export class HomeChartComponent implements OnInit {
           {
             label: 'Offer',
             lineTension: 0,
-            data: dataDetails.Offers.map(item => item.price)
+            data: dataDetails.Offers.map(item => item.price),
           }
         ]
+        console.log("DATA"+dataDetails.Offers.map(item => item.price));
         const labels = Array.apply(null, { length: dataDetails.Offers.length }).map(Number.call, Number);
         this.chartArray = [{ data: chartDataSet, labels }];
       });
