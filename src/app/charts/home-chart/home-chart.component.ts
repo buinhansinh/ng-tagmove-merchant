@@ -110,10 +110,20 @@ export class HomeChartComponent implements OnInit, OnDestroy {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
+        yAxes: [
+          {
+            scaleLabel: {
+              display: true,
+              labelString: "Price of offer"
+            }
+          }
+        ],
         xAxes: [
           {
-            display: true,
-            labelString: "Number of offers",
+            scaleLabel: {
+              display: true,
+              labelString: "Number of offers"
+            },
             type: "linear",
             ticks: {
               beginAtZero: false,
