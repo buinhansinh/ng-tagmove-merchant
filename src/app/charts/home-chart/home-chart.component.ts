@@ -42,8 +42,8 @@ export class HomeChartComponent implements OnInit, OnDestroy {
   lineChartType: string = "line";
   totalPrice: number;
   averagePrice: number;
-  maxPoint = 1;
-  loadingStatus: "loading" | "error" | "complete" = "loading";
+  maxPoint = 2;
+  loadingStatus: "loading" | "error" | "complete" | "no data" = "loading";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -80,7 +80,7 @@ export class HomeChartComponent implements OnInit, OnDestroy {
           {
             label: "Offer",
             lineTension: 0,
-            data: offers.map((item, index) => ({ x: index, y: item.price }))
+            data: offers.map((item, index) => ({ x: index + 1, y: item.price }))
           }
         ];
         const labels = Array.apply(null, {
@@ -88,16 +88,20 @@ export class HomeChartComponent implements OnInit, OnDestroy {
         }).map(Number.call, Number);
         this.chartData = { data: chartDataSet, labels };
         this.offers = offers;
-        this.maxPoint = this.getMaxPoint();
-        this.stepSize = Math.floor(this.maxPoint / 10) + 1;
-        this.lineChartOptions = this.getLineChartOptions(
-          this.stepSize,
-          this.maxPoint
-        );
-        timer(0).subscribe(() => {
-          this.sliderForm.setValue({ range: this.maxPoint });
-        });
-        this.loadingStatus = "complete";
+        if (this.offers && this.offers.length > 0) {
+          this.maxPoint = this.getMaxPoint();
+          this.stepSize = Math.floor(this.maxPoint / 10) + 1;
+          this.lineChartOptions = this.getLineChartOptions(
+            this.stepSize,
+            this.maxPoint
+          );
+          timer(0).subscribe(() => {
+            this.sliderForm.setValue({ range: this.maxPoint });
+          });
+          this.loadingStatus = "complete";
+        } else {
+          this.loadingStatus = "no data";
+        }
       });
   }
 
@@ -108,9 +112,11 @@ export class HomeChartComponent implements OnInit, OnDestroy {
       scales: {
         xAxes: [
           {
+            display: true,
+            labelString: "Number of offers",
             type: "linear",
             ticks: {
-              beginAtZero: true,
+              beginAtZero: false,
               stepSize: stepSize,
               max: max
             }

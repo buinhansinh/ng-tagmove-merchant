@@ -13,12 +13,13 @@
   </ng-container>
   <div *ngIf="loadingStatus==='error'">Error when trying to get offers</div>
   <div *ngIf="loadingStatus==='loading'"> Loading...</div>
+  <div *ngIf="loadingStatus==='no data'"> No available offers</div>
 </div>
 
 <div class="pr-2 pl-4 pt-2 pb-2 ml-2"
-  [class.invisible]="loadingStatus==='loading'">
+  [class.invisible]="loadingStatus!=='complete'">
   <form [formGroup]="sliderForm">
-    <nouislider [connect]="true" [min]="0" [max]="maxPoint" [step]="stepSize"
+    <nouislider [connect]="true" [min]="1" [max]="maxPoint" [step]="stepSize"
       [formControl]="sliderForm.controls.range"></nouislider>
   </form>
 </div>
