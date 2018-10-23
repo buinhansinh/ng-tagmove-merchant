@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedProduct: Product[] = [];
   statistics: ProductStatistics;
   productName: string;
-  isLoading = true;
+  isLoadingProducts = true;
+  isLoadingStatistics = true;
   constructor(
     private appService: AppService,
     private productService: ProductService,
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((statistics: ProductStatistics) => {
         this.statistics = statistics;
+        this.isLoadingStatistics = false;
       });
 
     this.productService
@@ -53,7 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.sharedService.updateSelectedProduct(
       products.length > 0 ? products[0] : null
     );
-    this.isLoading = false;
+    this.isLoadingProducts = false;
   }
 
   ngOnDestroy() {

@@ -46,6 +46,7 @@ import { AddProductComponent } from "./add-product/add-product.component";
 import { PayoutReceiptComponent } from "./payout-receipt/payout-receipt.component";
 import { FaqComponent } from "./faq/faq.component";
 import { SharedService } from "./services/shared.service";
+import { SpinnerComponent } from './spinner/spinner.component';
 
 // *******************************************************************************
 //
@@ -69,7 +70,8 @@ import { SharedService } from "./services/shared.service";
     AccountSettingsComponent,
     AddProductComponent,
     PayoutReceiptComponent,
-    FaqComponent
+    FaqComponent,
+    SpinnerComponent
   ],
 
   imports: [

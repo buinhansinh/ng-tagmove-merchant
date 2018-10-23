@@ -1,4 +1,8 @@
 @import "~nouislider/distribute/nouislider.min.css";
+@import "./vendor/libs/spinkit/spinkit.scss";
+@import "~@swimlane/ngx-datatable/release/index.css";
+@import "./vendor/libs/ngx-datatable/ngx-datatable.scss";
+@import "~@swimlane/ngx-datatable/release/assets/icons.css";
 
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {

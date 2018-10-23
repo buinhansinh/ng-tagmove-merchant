@@ -127,8 +127,8 @@ export class HomeChartComponent implements OnInit, OnDestroy {
             type: "linear",
             ticks: {
               beginAtZero: false,
-              stepSize: stepSize,
-              max: max
+              min: 1,
+              max: max + 1
             }
           }
         ]

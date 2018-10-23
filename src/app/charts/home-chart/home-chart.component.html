@@ -12,14 +12,14 @@
     </canvas>
   </ng-container>
   <div *ngIf="loadingStatus==='error'">Error when trying to get offers</div>
-  <div *ngIf="loadingStatus==='loading'"> Loading...</div>
+  <div *ngIf="loadingStatus==='loading'"> <app-spinner></app-spinner></div>
   <div *ngIf="loadingStatus==='no data'"> No available offers</div>
 </div>
 
 <div class="pr-2 pl-4 pt-2 pb-2 ml-2"
   [class.invisible]="loadingStatus!=='complete'">
   <form [formGroup]="sliderForm">
-    <nouislider [connect]="true" [min]="1" [max]="maxPoint" [step]="stepSize"
+    <nouislider [connect]="true" [min]="1" [max]="maxPoint" [step]="1"
       [formControl]="sliderForm.controls.range"></nouislider>
   </form>
 </div>
@@ -33,7 +33,7 @@
       <div class="ml-1 ml-md-2 ml-xl-3">
         <div class="text-muted small">Quantity</div>
         <div class="text-large" *ngIf="loadingStatus==='complete'">{{getSelectedOffers()}}</div>
-        <div *ngIf="loadingStatus==='loading'">...</div>
+        <div *ngIf="loadingStatus==='loading'"><app-spinner></app-spinner></div>
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
         <div class="text-muted small">Average Price</div>
         <div class="text-large" *ngIf="loadingStatus==='complete'">£{{averagePrice
           | number:'1.0-2'}}</div>
-        <div *ngIf="loadingStatus==='loading'">...</div>
+        <div *ngIf="loadingStatus==='loading'"><app-spinner></app-spinner></div>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
         <div class="text-muted small">Total Sale Price</div>
         <div class="text-large" *ngIf="loadingStatus==='complete'">£{{totalPrice
           | number:'1.0-2'}}</div>
-        <div *ngIf="loadingStatus==='loading'">...</div>
+        <div *ngIf="loadingStatus==='loading'"><app-spinner></app-spinner></div>
       </div>
     </div>
   </div>
