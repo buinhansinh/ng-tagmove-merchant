@@ -36,3 +36,7 @@
     max-height: 500px;
   }
 }
+:host ::ng-deep .datatable-body-cell-label {
+  display: flex;
+  align-items: center;
+}

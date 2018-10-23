@@ -14,7 +14,7 @@ import { SharedService } from "../services/shared.service";
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<any>();
-  readonly columns = ["img", "productName"].map(name => ({ prop: name }));
+  readonly columns = ["productName"].map(name => ({ prop: name }));
   products: Product[] = [];
   selectedProduct: Product[] = [];
   statistics: ProductStatistics;

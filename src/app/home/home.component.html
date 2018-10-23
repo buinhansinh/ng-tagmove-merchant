@@ -116,19 +116,15 @@
       [selectionType]="'single'"
       (select)='onSelectProduct($event)'>
 
-      <ngx-datatable-column name="img" [width]="100"
-        cellClass="border-right-0">
-        <ng-template let-row="row" let-value="value"
-          ngx-datatable-cell-template>
-          <img [attr.src]="row?.img" class="ui-w-80"
-            alt="row?.productName" />
-        </ng-template>
-      </ngx-datatable-column>
       <ngx-datatable-column name="productName" flexGrow="1"
         cellClass="d-flex align-items-center border-right-0">
         <ng-template let-row="row" let-value="value"
           ngx-datatable-cell-template>
-          {{row?.productName}}
+          <img [attr.src]="row?.img" class="ui-w-80 mr-2"
+            alt="row?.productName" />
+          <div class="flex-grow-1 d-flex">
+            {{row?.productName}}
+          </div>
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>
