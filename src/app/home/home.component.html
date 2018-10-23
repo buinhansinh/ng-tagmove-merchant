@@ -6,7 +6,7 @@
 
 <!-- Counters -->
 <div class="row">
-  <div class="col-sm-6 col-xl-3">
+  <div class="col-6 col-xl-3">
 
     <div class="card mb-4">
       <div class="card-body">
@@ -21,7 +21,7 @@
     </div>
 
   </div>
-  <div class="col-sm-6 col-xl-3">
+  <div class="col-6 col-xl-3">
 
     <div class="card mb-4">
       <div class="card-body">
@@ -36,7 +36,7 @@
     </div>
 
   </div>
-  <div class="col-sm-6 col-xl-3">
+  <div class="col-6 col-xl-3">
 
     <div class="card mb-4">
       <div class="card-body">
@@ -51,7 +51,7 @@
     </div>
 
   </div>
-  <div class="col-sm-6 col-xl-3">
+  <div class="col-6 col-xl-3">
 
     <div class="card mb-4">
       <div class="card-body">
@@ -91,7 +91,7 @@
   </div>
 </h6>
 <div class="row no-gutters row-bordered">
-  <div class="col-md-8 col-lg-12 col-xl-8 pr-3 pl-2 pt-3">
+  <div class="col-12 col-md-7 col-xl-8 pr-3 pl-2 pt-3">
 
     <div style="min-height: 360px">
       <app-home-chart></app-home-chart>
@@ -99,33 +99,35 @@
 
   </div>
 
-  <div class="col-md-4 col-lg-12 col-xl-4 pt-3">
+  <div class="col-12 col-md-5 col-xl-4 pt-3">
     <ngx-datatable
-      class="bootstrap mt-1"
+      class="bootstrap mt-1 product-list overflow-auto"
       [columnMode]="'force'"
       [selected]="selectedProduct"
       [headerHeight]="0"
       [rows]="products"
-      [rowHeight]="'auto'"
       [loadingIndicator]="isLoading"
       [columns]="columns"
+      [rowHeight]="'auto'"
       [selectionType]="'single'"
       (select)='onSelectProduct($event)'>
 
-      <ngx-datatable-column name="img">
+      <ngx-datatable-column name="img" cellClass="ui-w-80">
         <ng-template let-row="row" let-value="value"
           ngx-datatable-cell-template>
-          <img [attr.src]="row?.img" style="height: 60px"
+          <img [attr.src]="row?.img" class="ui-w-80"
             alt="row?.productName" />
         </ng-template>
       </ngx-datatable-column>
-      <ngx-datatable-column name="productName">
+      <ngx-datatable-column name="productName" cellClass="d-flex
+        align-items-center">
         <ng-template let-row="row" let-value="value"
           ngx-datatable-cell-template>
           {{row?.productName}}
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>
+
   </div>
 
 </div>

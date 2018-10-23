@@ -1,23 +1,28 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppService } from '../../app.service';
-import { LayoutService } from '../layout.service';
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { Router } from "@angular/router";
+import { AppService } from "../../app.service";
+import { LayoutService } from "../layout.service";
 
 @Component({
-  selector: 'app-layout-sidenav',
-  templateUrl: './layout-sidenav.component.html',
-  styles: [':host { display: block; }'],
+  selector: "app-layout-sidenav",
+  templateUrl: "./layout-sidenav.component.html",
+  styles: [":host { display: block; }"],
   host: {
-    '[class.layout-sidenav]': 'orientation !== "horizontal"',
-    '[class.layout-sidenav-horizontal]': 'orientation === "horizontal"',
-    '[class.flex-grow-0]': 'orientation === "horizontal"'
+    "[class.layout-sidenav]": 'orientation !== "horizontal"',
+    "[class.layout-sidenav-horizontal]": 'orientation === "horizontal"',
+    "[class.flex-grow-0]": 'orientation === "horizontal"'
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutSidenavComponent {
-  @Input() orientation = 'vertical';
+  @Input()
+  orientation = "vertical";
 
-  constructor(private router: Router, private appService: AppService, private layoutService: LayoutService) {}
+  constructor(
+    private router: Router,
+    private appService: AppService,
+    private layoutService: LayoutService
+  ) {}
 
   ngAfterViewInit() {
     // Safari bugfix
@@ -27,15 +32,21 @@ export class LayoutSidenavComponent {
   getClasses() {
     let bg = this.appService.layoutSidenavBg;
 
-    if (this.orientation === 'horizontal' && (bg.indexOf(' sidenav-dark') !== -1 || bg.indexOf(' sidenav-light') !== -1)) {
+    if (
+      this.orientation === "horizontal" &&
+      (bg.indexOf(" sidenav-dark") !== -1 ||
+        bg.indexOf(" sidenav-light") !== -1)
+    ) {
       bg = bg
-        .replace(' sidenav-dark', '')
-        .replace(' sidenav-light', '')
-        .replace('-darker', '')
-        .replace('-dark', '');
+        .replace(" sidenav-dark", "")
+        .replace(" sidenav-light", "")
+        .replace("-darker", "")
+        .replace("-dark", "");
     }
 
-    return `${this.orientation === 'horizontal' ? 'container-p-x ' : ''} bg-${bg}`;
+    return `${
+      this.orientation === "horizontal" ? "container-p-x " : ""
+    } bg-${bg}`;
   }
 
   isActive(url) {
@@ -47,7 +58,9 @@ export class LayoutSidenavComponent {
   }
 
   isMenuOpen(url) {
-    return this.router.isActive(url, false) && this.orientation !== 'horizontal';
+    return (
+      this.router.isActive(url, false) && this.orientation !== "horizontal"
+    );
   }
 
   toggleSidenav() {

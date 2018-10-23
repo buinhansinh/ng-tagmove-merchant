@@ -64,11 +64,7 @@ export class HomeChartComponent implements OnInit, OnDestroy {
           }
           return this.productService.getOffers(product.id).pipe(
             map(offers => {
-              let testData = [];
-              for (let i = 0; i < 10; ++i) {
-                testData = [...testData, ...offers];
-              }
-              return testData;
+              return offers;
             }),
             catchError(err => {
               console.log(err);
@@ -87,14 +83,13 @@ export class HomeChartComponent implements OnInit, OnDestroy {
             data: offers.map((item, index) => ({ x: index, y: item.price }))
           }
         ];
-        console.log(chartDataSet);
         const labels = Array.apply(null, {
           length: offers.length
         }).map(Number.call, Number);
         this.chartData = { data: chartDataSet, labels };
         this.offers = offers;
         this.maxPoint = this.getMaxPoint();
-        this.stepSize = Math.floor(this.maxPoint / 10);
+        this.stepSize = Math.floor(this.maxPoint / 10) + 1;
         this.lineChartOptions = this.getLineChartOptions(
           this.stepSize,
           this.maxPoint

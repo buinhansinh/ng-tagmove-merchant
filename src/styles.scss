@@ -13,7 +13,7 @@
 }
 
 // Remove outline on desktops
-@media(min-width: 720px) {
+@media (min-width: 720px) {
   ngb-carousel,
   .dropdown-item,
   ngb-datepicker,
@@ -31,10 +31,10 @@
 
 .router-transitions {
   opacity: 1;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 
   body.app-loading & {
-    opacity: .75;
+    opacity: 0.75;
   }
 }
 
@@ -42,29 +42,41 @@
 // * Tooltip and popover animations
 
 @include keyframes(ngTooltipAnimation) {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 ngb-tooltip-window {
-  animation: ngTooltipAnimation .25s;
+  animation: ngTooltipAnimation 0.25s;
 }
 
 // *******************************************************************************
 // * Modal animations
 
 @include keyframes(ngModalBackdropAnimation) {
-  0% { opacity: 0; }
-  100% { opacity: .5; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 @include keyframes(ngMaterialModalBackdropAnimation) {
-  0% { opacity: 0; }
-  100% { opacity: .2; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 @include keyframes(ngDefaultModalAnimation) {
   0% {
     opacity: 0;
-    transform: translateY(150px) scale(.8);
+    transform: translateY(150px) scale(0.8);
   }
   100% {
     opacity: 1;
@@ -104,7 +116,7 @@ ngb-tooltip-window {
 @include keyframes(ngFillInModalAnimation) {
   0% {
     opacity: 0;
-    transform: scale(.5, .5);
+    transform: scale(0.5, 0.5);
   }
   100% {
     opacity: 1;
@@ -113,39 +125,39 @@ ngb-tooltip-window {
 }
 
 ngb-modal-backdrop.modal-backdrop {
-  opacity: .5;
-  animation: ngModalBackdropAnimation .15s ease-out;
+  opacity: 0.5;
+  animation: ngModalBackdropAnimation 0.15s ease-out;
 }
 
 ngb-modal-window {
   &.modal .modal-dialog {
-    animation: ngDefaultModalAnimation .15s ease-out;
+    animation: ngDefaultModalAnimation 0.15s ease-out;
   }
 
   &.modal-top .modal-dialog {
-    animation: ngTopModalAnimation .15s ease-out;
+    animation: ngTopModalAnimation 0.15s ease-out;
   }
 
   &.modal-slide .modal-dialog {
-    animation: ngSlideModalAnimation .15s ease-out;
+    animation: ngSlideModalAnimation 0.15s ease-out;
   }
 
   &.modal-fill-in .modal-dialog {
-    animation: ngFillInModalAnimation .15s ease-out;
+    animation: ngFillInModalAnimation 0.15s ease-out;
   }
 
-  [dir=rtl] &.modal-slide .modal-dialog {
-    animation: ngRtlSlideModalAnimation .15s ease-out;
+  [dir="rtl"] &.modal-slide .modal-dialog {
+    animation: ngRtlSlideModalAnimation 0.15s ease-out;
   }
 }
 
 .material-style ngb-modal-backdrop.modal-backdrop {
-  opacity: .2;
-  animation: ngMaterialModalBackdropAnimation .15s ease-out;
+  opacity: 0.2;
+  animation: ngMaterialModalBackdropAnimation 0.15s ease-out;
 }
 
 // Prevent horizontal scrollbar
-[dir=rtl] .dz-hidden-input {
+[dir="rtl"] .dz-hidden-input {
   right: 0 !important;
   left: auto !important;
 }

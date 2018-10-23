@@ -15,7 +15,7 @@
   <div *ngIf="loadingStatus==='loading'"> Loading...</div>
 </div>
 
-<div class="col-xs-12 pr-3 pl-4 pt-2 pb-2 ml-2"
+<div class="col-xs-12 pr-2 pl-4 pt-2 pb-2 ml-2"
   [class.invisible]="loadingStatus==='loading'">
   <form [formGroup]="sliderForm">
     <nouislider [connect]="true" [min]="0" [max]="maxPoint" [step]="stepSize"
@@ -26,7 +26,7 @@
 <div class="col-md-12 col-lg-12 col-xl-12 row no-gutters row-bordered
   row-border-light container-m--x">
   <!-- Counters -->
-  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+  <div class="col-6 col-xl-3">
     <div class="d-flex align-items-center container-p-x py-4">
       <div class="lnr display-4 text-primary"></div>
       <div class="ml-3">
@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+  <div class="col-6 col-xl-3">
     <div class="d-flex align-items-center container-p-x py-4">
       <div class="lnr display-4 text-primary"></div>
       <div class="ml-3">
@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+  <div class="col-6 col-xl-3">
     <div class="d-flex align-items-center container-p-x py-4">
       <div class="lnr display-4 text-primary"></div>
       <div class="ml-3">
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6 col-md-3 col-lg-6 col-xl-3">
+  <div class="col-6 col-xl-3">
     <div class="d-flex align-items-center container-p-x py-4">
       <div class="lnr display-4 text-primary"></div>
       <button type="button" class="btn btn-xl btn-success" (click)="sell()"

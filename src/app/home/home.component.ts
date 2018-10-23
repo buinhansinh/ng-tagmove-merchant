@@ -9,7 +9,8 @@ import { SharedService } from "../services/shared.service";
 
 @Component({
   selector: "app-home",
-  templateUrl: "./home.component.html"
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<any>();
