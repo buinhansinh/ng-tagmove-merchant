@@ -20,17 +20,14 @@ export class ProductService {
   }
 
   getOffers(productID: string): Observable<Offer[]> {
-    return this._http
-      .get(`${this.mockUrl}/m/offers/${productID}`, { responseType: "text" })
-      .pipe(
-        map((res: string) => {
-          const data = res.replace(/ 0/g, " ");
-          return JSON.parse(data).map(offer => ({
-            ...offer,
-            price: Number.parseFloat(offer.price)
-          }));
-        })
-      );
+    return this._http.get(`${this.mockUrl}/m/offers/${productID}`).pipe(
+      map((res: any[]) => {
+        return res.map(offer => ({
+          ...offer,
+          price: Number.parseFloat(offer.price)
+        }));
+      })
+    );
   }
 
   getProductStatistics(): Observable<ProductStatistics> {

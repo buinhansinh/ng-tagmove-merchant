@@ -92,17 +92,6 @@ export class HomeChartComponent implements OnInit, OnDestroy {
             return of([]);
           }
           return this.productService.getOffers(product.id).pipe(
-            map(offers => {
-              return [
-                ...offers,
-                ...offers,
-                ...offers,
-                ...offers,
-                ...offers,
-                ...offers,
-                ...offers
-              ];
-            }),
             catchError(err => {
               console.log(err);
               this.loadingStatus = "error";
