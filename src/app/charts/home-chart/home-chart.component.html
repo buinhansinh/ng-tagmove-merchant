@@ -15,7 +15,7 @@
   <div *ngIf="loadingStatus==='loading'"> Loading...</div>
 </div>
 
-<div class="col-xs-12 pr-2 pl-4 pt-2 pb-2 ml-2"
+<div class="pr-2 pl-4 pt-2 pb-2 ml-2"
   [class.invisible]="loadingStatus==='loading'">
   <form [formGroup]="sliderForm">
     <nouislider [connect]="true" [min]="0" [max]="maxPoint" [step]="stepSize"
@@ -23,13 +23,13 @@
   </form>
 </div>
 
-<div class="col-md-12 col-lg-12 col-xl-12 row no-gutters row-bordered
-  row-border-light container-m--x">
+<div class="col-lg-12 col-xl-12 row no-gutters row-bordered
+  row-border-light">
   <!-- Counters -->
   <div class="col-6 col-xl-3">
     <div class="d-flex align-items-center container-p-x py-4">
       <div class="lnr display-4 text-primary"></div>
-      <div class="ml-3">
+      <div class="ml-1 ml-md-2 ml-xl-3">
         <div class="text-muted small">Quantity</div>
         <div class="text-large" *ngIf="loadingStatus==='complete'">{{getSelectedOffers()}}</div>
         <div *ngIf="loadingStatus==='loading'">...</div>
@@ -39,7 +39,7 @@
   <div class="col-6 col-xl-3">
     <div class="d-flex align-items-center container-p-x py-4">
       <div class="lnr display-4 text-primary"></div>
-      <div class="ml-3">
+      <div class="ml-1 ml-md-2 ml-xl-3">
         <div class="text-muted small">Average Price</div>
         <div class="text-large" *ngIf="loadingStatus==='complete'">£{{averagePrice
           | number:'1.0-2'}}</div>
@@ -50,7 +50,7 @@
   <div class="col-6 col-xl-3">
     <div class="d-flex align-items-center container-p-x py-4">
       <div class="lnr display-4 text-primary"></div>
-      <div class="ml-3">
+      <div class="ml-1 ml-md-2 ml-xl-3">
         <div class="text-muted small">Total Sale Price</div>
         <div class="text-large" *ngIf="loadingStatus==='complete'">£{{totalPrice
           | number:'1.0-2'}}</div>

@@ -1,9 +1,17 @@
 .product-list {
   max-height: 300px;
 }
+@media (max-width: 576px) {
+  .p-xsmall-2 {
+    padding: 12px !important;
+  }
+}
 @media (min-width: 576px) {
   .product-list {
     max-height: 300px;
+  }
+  .p-xsmall-2 {
+    padding: 12px;
   }
 }
 
