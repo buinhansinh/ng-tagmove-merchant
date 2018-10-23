@@ -5,12 +5,38 @@ import { ConfigService } from "../../services/config.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Product, Offer } from "../../model/model";
 import { SharedService } from "../../services/shared.service";
-import { switchMap, takeUntil, catchError, map } from "rxjs/operators";
+import {
+  switchMap,
+  takeUntil,
+  catchError,
+  map,
+  takeWhile
+} from "rxjs/operators";
 import { Subject } from "rxjs/Subject";
 import { of } from "rxjs/observable/of";
 import { timer } from "rxjs/observable/timer";
 import { empty } from "rxjs/Observer";
 import { BaseChartDirective } from "ng2-charts";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+declare var Chart: any;
+export interface XAxisPosition {
+  left: string;
+  width: string;
+}
+const xAxis$ = new BehaviorSubject<XAxisPosition>({
+  left: 4 + "px",
+  width: 4 + "px"
+});
+Chart.pluginService.register({
+  id: "test",
+  afterRender: function(chart, options) {
+    console.log(chart);
+    xAxis$.next({
+      left: chart.scales["x-axis-0"].left + "px",
+      width: chart.scales["x-axis-0"].width + "px"
+    });
+  }
+});
 @Component({
   selector: "app-home-chart",
   templateUrl: "./home-chart.component.html",
@@ -44,7 +70,7 @@ export class HomeChartComponent implements OnInit, OnDestroy {
   averagePrice: number;
   maxPoint = 2;
   loadingStatus: "loading" | "error" | "complete" | "no data" = "loading";
-
+  xAxis: XAxisPosition;
   constructor(
     private formBuilder: FormBuilder,
     private sharedService: SharedService,
@@ -53,6 +79,9 @@ export class HomeChartComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    xAxis$.pipe(takeUntil(this.destroy$)).subscribe(axisPosition => {
+      this.xAxis = axisPosition;
+    });
     this.createForm();
     this.sharedService
       .getSelectedProduct()
@@ -64,7 +93,15 @@ export class HomeChartComponent implements OnInit, OnDestroy {
           }
           return this.productService.getOffers(product.id).pipe(
             map(offers => {
-              return offers;
+              return [
+                ...offers,
+                ...offers,
+                ...offers,
+                ...offers,
+                ...offers,
+                ...offers,
+                ...offers
+              ];
             }),
             catchError(err => {
               console.log(err);
@@ -128,11 +165,22 @@ export class HomeChartComponent implements OnInit, OnDestroy {
             ticks: {
               beginAtZero: false,
               min: 1,
-              max: max + 1
+              max: max
             }
           }
         ]
-      }
+      },
+      plugins: [
+        {
+          id: "test",
+          afterDraw: function(chart, options) {
+            console.log(chart);
+          },
+          beforeInit: function(chart, options) {
+            console.log(chart);
+          }
+        }
+      ]
     };
   }
 
@@ -154,7 +202,7 @@ export class HomeChartComponent implements OnInit, OnDestroy {
   }
 
   getMaxPoint() {
-    return Math.abs(this.offers ? this.offers.length - 1 : 1);
+    return this.offers ? this.offers.length : 1;
   }
 
   getSelectedOffers() {

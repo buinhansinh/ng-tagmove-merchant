@@ -16,7 +16,8 @@
   <div *ngIf="loadingStatus==='no data'"> No available offers</div>
 </div>
 
-<div class="pr-2 pl-4 pt-2 pb-2 ml-2"
+<div class="pt-2 pb-2" [style.width]="xAxis?.width"
+  [style.margin-left]="xAxis?.left"
   [class.invisible]="loadingStatus!=='complete'">
   <form [formGroup]="sliderForm">
     <nouislider [connect]="true" [min]="1" [max]="maxPoint" [step]="1"
