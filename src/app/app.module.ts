@@ -1,54 +1,51 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { NouisliderModule } from 'ng2-nouislider';
-
+import { BrowserModule, Title } from "@angular/platform-browser";
+import { NgModule, APP_INITIALIZER } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpModule } from "@angular/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ChartsModule } from "ng2-charts/ng2-charts";
+import { NouisliderModule } from "ng2-nouislider";
+import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 
 // *******************************************************************************
 // NgBootstrap
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 // *******************************************************************************
 // App
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AppService } from './app.service';
-import { LayoutModule } from './layout/layout.module';
-
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { AppService } from "./app.service";
+import { LayoutModule } from "./layout/layout.module";
 
 // *******************************************************************************
 // Services
-import { ProductService } from './services/product.service';
-import { WebsocketService } from './services/websocket.service';
-import { ConfigService } from './services/config.service';
-
+import { ProductService } from "./services/product.service";
+import { WebsocketService } from "./services/websocket.service";
+import { ConfigService } from "./services/config.service";
 
 // *******************************************************************************
 // Pages
 
-import { HomeComponent } from './home/home.component';
-import { OrdersComponent } from './orders/orders.component';
-import { PayoutsComponent } from './payouts/payouts.component';
-import { ProductsComponent } from './products/products.component';
-import { OrderItemComponent } from './order-item/order-item.component';
-import { HomeChartComponent } from './charts/home-chart/home-chart.component';
-import { HelpComponent } from './help/help.component';
-import { ProductItemComponent } from './product-item/product-item.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { TermsComponent } from './terms/terms.component';
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { AddProductComponent } from './add-product/add-product.component';
-import { PayoutReceiptComponent } from './payout-receipt/payout-receipt.component';
-import { FaqComponent } from './faq/faq.component';
-
+import { HomeComponent } from "./home/home.component";
+import { OrdersComponent } from "./orders/orders.component";
+import { PayoutsComponent } from "./payouts/payouts.component";
+import { ProductsComponent } from "./products/products.component";
+import { OrderItemComponent } from "./order-item/order-item.component";
+import { HomeChartComponent } from "./charts/home-chart/home-chart.component";
+import { HelpComponent } from "./help/help.component";
+import { ProductItemComponent } from "./product-item/product-item.component";
+import { AboutComponent } from "./about/about.component";
+import { ContactComponent } from "./contact/contact.component";
+import { TermsComponent } from "./terms/terms.component";
+import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { AddProductComponent } from "./add-product/add-product.component";
+import { PayoutReceiptComponent } from "./payout-receipt/payout-receipt.component";
+import { FaqComponent } from "./faq/faq.component";
+import { SharedService } from "./services/shared.service";
 
 // *******************************************************************************
 //
@@ -87,7 +84,8 @@ import { FaqComponent } from './faq/faq.component';
     AppRoutingModule,
     LayoutModule,
     ChartsModule,
-    NouisliderModule
+    NouisliderModule,
+    NgxDatatableModule
   ],
 
   providers: [
@@ -95,13 +93,17 @@ import { FaqComponent } from './faq/faq.component';
     AppService,
     ProductService,
     WebsocketService,
+    SharedService,
     ConfigService,
-    {provide: APP_INITIALIZER, useFactory: configFactory, deps: [ConfigService], multi: true }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: configFactory,
+      deps: [ConfigService],
+      multi: true
+    }
   ],
 
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 

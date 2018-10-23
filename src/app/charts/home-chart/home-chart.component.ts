@@ -1,110 +1,184 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { WebsocketService } from '../../services/websocket.service';
-import { ProductService } from '../../services/product.service';
-import { ConfigService } from '../../services/config.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
+import { WebsocketService } from "../../services/websocket.service";
+import { ProductService } from "../../services/product.service";
+import { ConfigService } from "../../services/config.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Product, Offer } from "../../model/model";
+import { SharedService } from "../../services/shared.service";
+import { switchMap, takeUntil, catchError, map } from "rxjs/operators";
+import { Subject } from "rxjs/Subject";
+import { of } from "rxjs/observable/of";
+import { timer } from "rxjs/observable/timer";
+import { empty } from "rxjs/Observer";
+import { BaseChartDirective } from "ng2-charts";
 @Component({
-  selector: 'app-home-chart',
-  templateUrl: './home-chart.component.html',
-  styleUrls: ['./home-chart.component.scss']
+  selector: "app-home-chart",
+  templateUrl: "./home-chart.component.html",
+  styleUrls: ["./home-chart.component.scss"]
 })
-export class HomeChartComponent implements OnInit {
-  chartArray: any[];
+export class HomeChartComponent implements OnInit, OnDestroy {
+  @ViewChild(BaseChartDirective)
+  chart;
+  private readonly destroy$ = new Subject<any>();
+  chartData: any;
   public sliderForm: FormGroup;
   public offers: any[];
 
-  lineChartOptions: any = {
-    responsive: true,
-    maintainAspectRatio: true,
-  }
-
   lineChartColors: Array<any> = [
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    {
+      // dark grey
+      backgroundColor: "rgba(77,83,96,0.2)",
+      borderColor: "rgba(77,83,96,1)",
+      pointBackgroundColor: "rgba(77,83,96,1)",
+      pointBorderColor: "#fff",
+      pointHoverBackgroundColor: "#fff",
+      pointHoverBorderColor: "rgba(77,83,96,1)"
     }
-  ]
+  ];
 
+  stepSize = 10;
+  lineChartOptions: any = this.getLineChartOptions(this.stepSize);
   lineChartLegend: boolean = false;
-  lineChartType: string = 'line';
+  lineChartType: string = "line";
+  totalPrice: number;
+  averagePrice: number;
+  maxPoint = 1;
+  loadingStatus: "loading" | "error" | "complete" = "loading";
 
   constructor(
     private formBuilder: FormBuilder,
-    private _socket: WebsocketService,
+    private sharedService: SharedService,
     private configService: ConfigService,
     private productService: ProductService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    const config = this.configService.getConfig();
-    this._socket.connect(`wss://${config.baseUrl}/ws`).subscribe((data) => {
-      setTimeout(() => {
-        this.offers = data.Offers;
-
-        const dataDetails = data;
+    this.createForm();
+    this.sharedService
+      .getSelectedProduct()
+      .pipe(
+        switchMap((product: Product) => {
+          this.loadingStatus = "loading";
+          if (!product) {
+            return of([]);
+          }
+          return this.productService.getOffers(product.id).pipe(
+            map(offers => {
+              let testData = [];
+              for (let i = 0; i < 10; ++i) {
+                testData = [...testData, ...offers];
+              }
+              return testData;
+            }),
+            catchError(err => {
+              console.log(err);
+              this.loadingStatus = "error";
+              return of([]);
+            })
+          );
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((offers: Offer[]) => {
         const chartDataSet = [
           {
-            label: 'Offer',
+            label: "Offer",
             lineTension: 0,
-            data: dataDetails.Offers.map(item => item.price),
+            data: offers.map((item, index) => ({ x: index, y: item.price }))
+          }
+        ];
+        console.log(chartDataSet);
+        const labels = Array.apply(null, {
+          length: offers.length
+        }).map(Number.call, Number);
+        this.chartData = { data: chartDataSet, labels };
+        this.offers = offers;
+        this.maxPoint = this.getMaxPoint();
+        this.stepSize = Math.floor(this.maxPoint / 10);
+        this.lineChartOptions = this.getLineChartOptions(
+          this.stepSize,
+          this.maxPoint
+        );
+        timer(0).subscribe(() => {
+          this.sliderForm.setValue({ range: this.maxPoint });
+        });
+        this.loadingStatus = "complete";
+      });
+  }
+
+  private getLineChartOptions(stepSize: number = 1, max: number = 1): any {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        xAxes: [
+          {
+            type: "linear",
+            ticks: {
+              beginAtZero: true,
+              stepSize: stepSize,
+              max: max
+            }
           }
         ]
-        console.log("DATA"+dataDetails.Offers.map(item => item.price));
-        const labels = Array.apply(null, { length: dataDetails.Offers.length }).map(Number.call, Number);
-        this.chartArray = [{ data: chartDataSet, labels }];
-      });
-    });
-
-    this._socket.emit({ "type": 1, "productId": "5b3a9814c1880a0578988d6a" });
-
-    this.createForm();
+      }
+    };
   }
 
   createForm() {
     this.sliderForm = this.formBuilder.group({
       range: [1]
     });
+    this.sliderForm.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(values => {
+        const range = values.range;
+        const {
+          totalPrice,
+          averagePrice
+        } = this.getTotalPriceForSelectedOffers(range);
+        this.totalPrice = totalPrice;
+        this.averagePrice = averagePrice;
+      });
   }
 
   getMaxPoint() {
-    return this.offers ? this.offers.length - 1 : 1;
+    return Math.abs(this.offers ? this.offers.length - 1 : 1);
   }
 
   getSelectedOffers() {
-    return this.sliderForm.get('range').value + 1;
+    return this.sliderForm.get("range").value;
   }
 
-  getTotalPriceForSelectedOffers() {
+  getTotalPriceForSelectedOffers(
+    selectedCount: number
+  ): { totalPrice: number; averagePrice: number } {
     let total = 0;
-
-    if (this.offers) {
-      const selectedCount = this.getSelectedOffers();
-
-      for (let i = 0; i < selectedCount; i++) {
-        total += this.offers[i].price;
-      }
+    for (let i = 0; i < selectedCount; i++) {
+      total += this.offers[i].price;
     }
-
-    return total;
+    return {
+      totalPrice: total,
+      averagePrice: total / selectedCount
+    };
   }
 
   sell() {
     const selectedCount = this.getSelectedOffers();
     const selectedOffersArray: any[] = [];
-    console.log(this.offers)
+    console.log(this.offers);
 
     for (let i = 0; i < selectedCount; i++) {
       selectedOffersArray.push(this.offers[i].id);
     }
 
-    this.productService.acceptOffers(selectedOffersArray).subscribe((res) => {
-      console.log(res)
+    this.productService.acceptOffers(selectedOffersArray).subscribe(res => {
+      console.log(res);
     });
   }
 
+  ngOnDestroy() {
+    this.destroy$.next("");
+    this.destroy$.unsubscribe();
+  }
 }
