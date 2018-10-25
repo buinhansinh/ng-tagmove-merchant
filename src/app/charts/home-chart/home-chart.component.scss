@@ -1,0 +1,5 @@
+.row-bordered > [class^="col-"] {
+  &.no-border::after {
+    border-left: none;
+  }
+}
