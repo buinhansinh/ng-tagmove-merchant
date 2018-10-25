@@ -1,15 +1,18 @@
-<nav class="navbar navbar-expand-lg align-items-lg-center container-p-x" [ngClass]="currentBg()">
+<nav class="navbar navbar-expand-lg align-items-lg-center container-p-x"
+  [ngClass]="currentBg()">
 
   <!-- Brand demo (see demo.css) -->
-  <a routerLink="/" class="navbar-brand demo-brand d-lg-none py-0">
+  <a routerLink="/" class="navbar-brand demo-brand d-xl-none py-0">
     <span class="demo-brand-logo bg-primary">
-        <img src="assets/img/logo/logo-dark-noback.png">
+      <img src="assets/img/logo/logo-dark-noback.png">
     </span>
   </a>
 
   <!-- Sidenav toggle (see demo.css) -->
-  <div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto" *ngIf="sidenavToggle">
-    <a class="nav-item nav-link px-0 ml-2 ml-lg-0" href="javascript:void(0)" (click)="toggleSidenav()">
+  <div class="layout-sidenav-toggle navbar-nav d-xl-none align-items-lg-center
+    mr-auto" *ngIf="sidenavToggle">
+    <a class="nav-item nav-link px-0 ml-2 ml-lg-0" href="javascript:void(0)"
+      (click)="toggleSidenav()">
       <i class="ion ion-md-menu text-large align-middle"></i>
     </a>
   </div>
@@ -19,21 +22,27 @@
     </div>
   </div>
 
-        <!-- Divider -->
-        <div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div>
+  <!-- Divider -->
+  <div class="nav-item d-none d-lg-block text-big font-weight-light
+    line-height-1 opacity-25 mr-3 ml-1">|</div>
 
-        <div ngbDropdown [placement]="isRTL ? 'bottom-left' : 'bottom-right'" class="demo-navbar-user nav-item">
-          <a ngbDropdownToggle class="nav-link" href="javascript:void(0)">
-            <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
-              <img src="assets/img/avatars/1.png" alt class="d-block ui-w-30 rounded-circle">
-              <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Mike's Shop</span>
-            </span>
-          </a>
-          <div ngbDropdownMenu [class.dropdown-menu-right]="!isRTL">
-            <a routerLink="/account-settings" class="dropdown-item"><i class="ion ion-md-settings text-lightest"></i> &nbsp; Account settings</a>
-            <div class="dropdown-divider"></div>
-            <a href="javascript:void(0)" class="dropdown-item"><i class="ion ion-ios-log-out text-danger"></i> &nbsp; Log Out</a>
-          </div>
-        </div>
+  <div ngbDropdown [placement]="isRTL ? 'bottom-left' : 'bottom-right'"
+    class="demo-navbar-user nav-item">
+    <a ngbDropdownToggle class="nav-link" href="javascript:void(0)">
+      <span class="d-inline-flex flex-lg-row-reverse align-items-center
+        align-middle">
+        <img src="assets/img/avatars/1.png" alt class="d-block ui-w-30
+          rounded-circle">
+        <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Mike's Shop</span>
+      </span>
+    </a>
+    <div ngbDropdownMenu [class.dropdown-menu-right]="!isRTL">
+      <a routerLink="/account-settings" class="dropdown-item"><i class="ion
+          ion-md-settings text-lightest"></i> &nbsp; Account settings</a>
+      <div class="dropdown-divider"></div>
+      <a href="javascript:void(0)" class="dropdown-item"><i class="ion
+          ion-ios-log-out text-danger"></i> &nbsp; Log Out</a>
+    </div>
+  </div>
 
 </nav>

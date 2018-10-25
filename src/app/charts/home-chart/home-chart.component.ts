@@ -30,7 +30,6 @@ const xAxis$ = new BehaviorSubject<XAxisPosition>({
 Chart.pluginService.register({
   id: "test",
   afterRender: function(chart, options) {
-    console.log(chart);
     xAxis$.next({
       left: chart.scales["x-axis-0"].left + "px",
       width: chart.scales["x-axis-0"].width + "px"

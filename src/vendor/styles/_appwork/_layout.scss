@@ -128,7 +128,7 @@
 // *******************************************************************************
 // * Small screens layout
 
-@media (max-width: (map-get($grid-breakpoints, lg) - 1)) {
+@media (max-width: (map-get($grid-breakpoints, xl) - 1)) {
   .layout-sidenav {
     position: fixed !important;
     top: 0 !important;
@@ -193,7 +193,7 @@
 // *******************************************************************************
 // * Collapsed layout
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   // Sidenav style
 
   .layout-collapsed:not(.layout-offcanvas):not(.layout-fixed-offcanvas) {
@@ -243,7 +243,7 @@
 // *******************************************************************************
 // * Off-canvas layout
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   .layout-collapsed.layout-offcanvas {
     .layout-sidenav {
       margin-right: -$sidenav-width;
@@ -262,13 +262,13 @@
       .layout-sidenav {
         margin-right: 0;
         margin-left: -$sidenav-width;
-        transform: translateX(100%)
+        transform: translateX(100%);
       }
 
       &.layout-reversed .layout-sidenav {
         margin-right: -$sidenav-width;
         margin-left: 0;
-        transform: translateX(-100%)
+        transform: translateX(-100%);
       }
     }
   }
@@ -277,7 +277,7 @@
 // *******************************************************************************
 // * Fixed and fixed off-canvas layout
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   // Sidenav
 
   .layout-fixed,
@@ -392,11 +392,12 @@
 }
 
 // Reset paddings
-html:not(.layout-navbar-fixed):not(.layout-fixed):not(.layout-fixed-offcanvas) .layout-container,
+html:not(.layout-navbar-fixed):not(.layout-fixed):not(.layout-fixed-offcanvas)
+  .layout-container,
 html:not(.layout-navbar-fixed) .layout-2 .layout-container {
   padding-top: 0 !important;
 }
-@media (max-width: (map-get($grid-breakpoints, lg) - 1)) {
+@media (max-width: (map-get($grid-breakpoints, xl) - 1)) {
   .layout-fixed .layout-wrapper.layout-1 .layout-sidenav,
   .layout-fixed-offcanvas .layout-wrapper.layout-1 .layout-sidenav {
     top: 0 !important;
@@ -417,7 +418,7 @@ html:not(.layout-navbar-fixed) .layout-2 .layout-container {
   left: 0;
 }
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   // Fix navbar within layout 1 in fixed mode
   .layout-fixed .layout-1 .layout-navbar,
   .layout-fixed-offcanvas .layout-1 .layout-navbar {
@@ -504,7 +505,7 @@ html:not(.layout-navbar-fixed) .layout-2 .layout-container {
   }
 }
 
-@media (max-width: (map-get($grid-breakpoints, lg) - 1)) {
+@media (max-width: (map-get($grid-breakpoints, xl) - 1)) {
   .layout-sidenav {
     z-index: $zindex-layout-mobile;
   }
@@ -514,7 +515,7 @@ html:not(.layout-navbar-fixed) .layout-2 .layout-container {
   }
 }
 
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   .layout-1 {
     .layout-navbar {
       z-index: 10;
@@ -582,7 +583,7 @@ html:not(.layout-navbar-fixed) .layout-2 .layout-container {
   }
 }
 
-@media (max-width: (map-get($grid-breakpoints, lg) - 1)) {
+@media (max-width: (map-get($grid-breakpoints, xl) - 1)) {
   .layout-transitioning {
     .layout-overlay {
       animation: layoutSidenavAnimation $sidenav-animation-duration;
@@ -595,8 +596,9 @@ html:not(.layout-navbar-fixed) .layout-2 .layout-container {
   }
 }
 
-@include media-breakpoint-up(lg) {
-  .layout-collapsed:not(.layout-transitioning):not(.layout-offcanvas):not(.layout-fixed):not(.layout-fixed-offcanvas) .layout-sidenav {
+@include media-breakpoint-up(xl) {
+  .layout-collapsed:not(.layout-transitioning):not(.layout-offcanvas):not(.layout-fixed):not(.layout-fixed-offcanvas)
+    .layout-sidenav {
     transition-duration: $sidenav-animation-duration;
     transition-property: margin-left, margin-right, width;
   }
@@ -604,7 +606,8 @@ html:not(.layout-navbar-fixed) .layout-2 .layout-container {
   .layout-transitioning {
     &.layout-offcanvas .layout-sidenav {
       transition-duration: $sidenav-animation-duration;
-      transition-property: margin-left, margin-right, transform, -webkit-transform;
+      transition-property: margin-left, margin-right, transform,
+        -webkit-transform;
     }
 
     &.layout-fixed,
@@ -633,7 +636,8 @@ html:not(.layout-navbar-fixed) .layout-2 .layout-container {
       transition-property: left, right;
     }
 
-    &:not(.layout-offcanvas):not(.layout-fixed):not(.layout-fixed-offcanvas) .layout-sidenav {
+    &:not(.layout-offcanvas):not(.layout-fixed):not(.layout-fixed-offcanvas)
+      .layout-sidenav {
       transition-duration: $sidenav-animation-duration;
       transition-property: margin-left, margin-right, width;
     }
