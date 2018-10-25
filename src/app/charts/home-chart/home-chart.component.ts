@@ -28,7 +28,7 @@ const xAxis$ = new BehaviorSubject<XAxisPosition>({
   width: 4 + "px"
 });
 Chart.pluginService.register({
-  id: "test",
+  id: "getXAxisPosition",
   afterRender: function(chart, options) {
     xAxis$.next({
       left: chart.scales["x-axis-0"].left + "px",
@@ -157,18 +157,7 @@ export class HomeChartComponent implements OnInit, OnDestroy {
             }
           }
         ]
-      },
-      plugins: [
-        {
-          id: "test",
-          afterDraw: function(chart, options) {
-            console.log(chart);
-          },
-          beforeInit: function(chart, options) {
-            console.log(chart);
-          }
-        }
-      ]
+      }
     };
   }
 
